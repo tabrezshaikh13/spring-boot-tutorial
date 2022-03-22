@@ -1,7 +1,10 @@
 package com.example.springboottutorial.service;
 
 import java.util.List;
+import java.util.Optional;
+
 import com.example.springboottutorial.entity.Department;
+import com.example.springboottutorial.error.DepartmentNotFoundException;
 import com.example.springboottutorial.repository.DepartmentRepository;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +28,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department getDepartmentById(Long id) {
-        return departmentRepository.findById(id).get();
+    public Department getDepartmentById(Long id) throws DepartmentNotFoundException {
+        Optional<Department> department = departmentRepository.findById(id);
+        if(department.isEmpty()) throw new DepartmentNotFoundException("Department not found.");
+        else return department.get();
     }
 
     @Override
