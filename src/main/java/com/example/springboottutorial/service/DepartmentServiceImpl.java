@@ -41,5 +41,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         if(departmentRepository.existsById(id)) newDepartment.setDepartmentId(id);
         return departmentRepository.save(newDepartment);
     }
+
+    @Override
+    public Department getDepartmentByName(String name) {
+        return departmentRepository.findByDepartmentName(name);
+    }
     
 }

@@ -40,10 +40,16 @@ public class DepartmentController {
     }
 
     @RequestMapping(value = "/departments/{id}", method = RequestMethod.PUT)
-    public Department updateDepartmentById(@PathVariable(value = "id") Long id,
+    public Department updateDepartmentById(
+        @PathVariable(value = "id") Long id,
         @RequestBody Department department) {
 
         return departmentService.updateDepartmentById(id, department);
+    }
+
+    @RequestMapping(value = "/departments/names/{name}")
+    public Department getDepartmentByName(@PathVariable(value = "name") String name) {
+        return departmentService.getDepartmentByName(name);
     }
     
 }
