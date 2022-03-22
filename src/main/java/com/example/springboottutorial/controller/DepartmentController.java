@@ -1,8 +1,11 @@
 package com.example.springboottutorial.controller;
 
 import java.util.List;
+import javax.validation.Valid;
 import com.example.springboottutorial.entity.Department;
 import com.example.springboottutorial.service.DepartmentService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,12 +17,15 @@ public class DepartmentController {
 
     private DepartmentService departmentService;
 
+    private final Logger LOGGER = LoggerFactory.getLogger(DepartmentController.class);
+
     public DepartmentController(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 
     @RequestMapping(value = "/departments", method = RequestMethod.POST)
-    public Department saveDepartment(@RequestBody Department department) {
+    public Department saveDepartment(@Valid @RequestBody Department department) {
+        LOGGER.info("Inside saveDepartment function in DepartmentController class");
         return departmentService.saveDepartment(department);
     }
 
