@@ -1,15 +1,13 @@
 package com.example.springboottutorial.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.mockito.ArgumentMatchers.contains;
-
 import com.example.springboottutorial.entity.Department;
 import com.example.springboottutorial.repository.DepartmentRepository;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 
@@ -20,6 +18,7 @@ public class DepartmentServiceTest {
     @MockBean
     private DepartmentRepository departmentRepository;
 
+    @Autowired
     public DepartmentServiceTest(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
