@@ -1,9 +1,7 @@
 package com.example.springboottutorial.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import com.example.springboottutorial.entity.Department;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
